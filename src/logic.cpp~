@@ -1,0 +1,24 @@
+#include <iostream>
+#include "database.h";
+#include "logic.cpp";
+
+void Logic::update_odds(int p, int b, bool did_win, bool did_hit) {
+  if (did_hit) {
+   if(did_win) {
+      hit[p][b]++;
+    }
+  }
+  else {
+    if(did_win) {
+      
+  
+
+}
+
+void Logic::compare(int p1, int b2, int p2, int b2) {
+
+}
+
+void Logic::load() {
+
+}

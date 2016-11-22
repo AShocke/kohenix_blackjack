@@ -1,0 +1,14 @@
+#include <iostream>
+#ifndef LOGIC_H
+#define LOGIC_H
+
+class Logic {
+private:
+  int state[21][11] = { {100} };
+public:
+  boolean fold_or_hit(int p, int b);
+  void update_odds(int p, int b, boolean did_win);
+}
+
+#endif
+  

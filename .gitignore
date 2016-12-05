@@ -33,3 +33,7 @@
 [._]s[a-w][a-z]
 .netrwhist
 *~
+# project data files
+*.dat
+# project test files
+*.test

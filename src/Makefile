@@ -3,9 +3,15 @@ tests =  database_test
 
 all: main $(tests)
 
-main:  logic.o training.o
+main:  logic training
 	$(CC) main.cpp database.cpp blackjack.cpp logic.cpp training.cpp -o $@	
 
+training:
+	$(CC) -c logic.cpp database.cpp blackjack.cpp 
+
+logic:
+	$(CC) -c logic.cpp database.cpp  
+	
 tests: $(tests)
 
 database_test: logic.o

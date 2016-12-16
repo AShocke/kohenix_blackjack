@@ -1,6 +1,6 @@
 #include <iostream>
 #include <stdlib.h>
-#include "blackjack.h"
+#include "../include/blackjack.h"
 
 Blackjack::Blackjack() {
     dealer_turn = false;
@@ -81,6 +81,9 @@ bool Blackjack::did_player_win() {
 bool Blackjack::did_player_bust() {
     return (count_player_hand() > 21); 
 }
+bool Blackjack::did_dealer_bust() {
+    return (count_dealer_hand() > 21);
+}
 int Blackjack::count_player_hand() {
     int sum = 0;
     int alt_sum = 0; // only one ace can be worth 11
@@ -127,6 +130,16 @@ int Blackjack::count_dealer_hand() {
     }
     return ((alt_sum > sum) && (alt_sum <= BLACKJACK))? alt_sum : sum;
 }
-	
+
+bool Blackjack::will_dealer_hit() { // Dealer must hit on a card value
+                                 // below 17
+    if(count_dealer_hand() < 17) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+    
     
 

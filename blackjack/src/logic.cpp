@@ -2,8 +2,8 @@
 #include <stdlib.h>
 #include <fstream>
 #include <random>
-#include "logic.h"
-#include "database.h"
+#include "../include/logic.h"
+#include "../include/database.h"
 /*
  * The ai's main source of decision is from an array which is accessed by the dealers shown hand
  * and the ai's current hand. This array decides whether the ai will hit or stay.
@@ -59,11 +59,13 @@ void Logic::update_odds(int p, int b, bool did_win, bool did_hit) {
   if (did_hit) {
    if(did_win) {
        hit_[p][b]++;
+       stay_[p][b]--;
     }
   }
   else {
     if(did_win) {
       stay_[p][b]++;
+      hit_[p][b]--;
     }
   }
 }

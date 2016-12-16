@@ -35,5 +35,5 @@
 *~
 # project data files
 *.dat
-# project test files
-*.test
+# project bin files
+bin/*

@@ -1,5 +1,5 @@
 #include <iostream>
-#include "../logic.h"
+#include "../include/logic.h"
 
 const std::string STAY_TEST = "stay.test";
 const std::string HIT_TEST = "hit.test";

@@ -2,7 +2,7 @@
  */
 #include <iostream>
 #include <fstream>
-#include "database.h"
+#include "../include/database.h"
 
 void Database::save(int state[21][11]) {
     std::ofstream o(DEFAULT_PATH.c_str(), std::ios::out);
@@ -31,7 +31,7 @@ void Database::save(int state[21][11], std::string filename) {
 		o << x << " " << y << " " << state[x][y] << "\n";
 	    }
 	}
-	std::cout << "File was saved succesfully\n";
+	std::cout << filepath << " was saved succesfully\n";
     }
     else { 
 	std::cout << "Error: Could not open file \'" << filepath << "' for writing.\n";
@@ -82,7 +82,7 @@ void Database::save_pretty(int state[21][11], std::string filename) {
 	    }
 	    o << "\n\n";
 	}
-	std::cout << "File was saved succesfully\n";
+	std::cout << filepath << "  was saved succesfully\n";
 	o.close();
     } else {
 	std::cout << "Error: Loading from file '" << filepath << "'for writing.\n"; 

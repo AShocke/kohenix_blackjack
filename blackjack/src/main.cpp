@@ -1,5 +1,5 @@
 #include <iostream>
-#include "training.h"
+#include "../include/training.h"
 
 int main() {
     std::cout << "**Blacjack Trainer**\nHow many iterations?: ";

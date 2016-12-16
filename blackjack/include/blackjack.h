@@ -50,9 +50,9 @@ public:
     }
     bool did_player_win();
     bool did_player_bust();
+    bool did_dealer_bust();
     int count_player_hand();
     int count_dealer_hand();
-
-   
+    bool will_dealer_hit();
 };
 #endif

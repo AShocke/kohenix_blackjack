@@ -39,7 +39,7 @@ void run_game(long long int iterations, bool new_data) {
         }
         // dealer_turn();
         if(!did_player_bust) { // if player has not lost yet
-            while((c % 17) == 0) {
+            while(b.will_dealer_hit) == 0) {
                 b.give_dealer_card();
                 if(b.did_dealer_bust()) {
                     did_dealer_bust = true;

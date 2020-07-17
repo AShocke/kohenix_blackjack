@@ -9,7 +9,8 @@
  * and the ai's current hand. This array decides whether the ai will hit or stay.
  * If the ai won after hitting, then it will add one point to the weights.
  */
-Logic::Logic(bool new_data) {
+Logic::Logic(bool new_data, bool d) {
+    debug = d;
     if (new_data) {
         for (int x = 0; x < 21; x++) {
             for (int y = 0; y < 11; y++) {
@@ -22,7 +23,8 @@ Logic::Logic(bool new_data) {
         load();
     }
 }
-Logic::Logic(std::string stay_file, std::string hit_file) {
+Logic::Logic(std::string stay_file, std::string hit_file, bool d) {
+    debug = d;
     load(stay_file, hit_file);
     print();
 }
@@ -75,21 +77,21 @@ void Logic::update_odds(int p, int b, bool did_win, bool did_hit) {
  */
 bool Logic::hit_or_stay(int p, int d) {
     int stay_odds = stay_[p][d];
-    std::cout << stay_odds << "\n";
+    //std::cout << stay_odds << "\n";
     int hit_odds = hit_[p][d];
-    std::cout << hit_odds << "\n";
+    //std::cout << hit_odds << "\n";
     int sum_of_odds = stay_odds + hit_odds;
-    std::cout << "sum_of_odds: " << sum_of_odds << "\n";
+    //std::cout << "sum_of_odds: " << sum_of_odds << "\n";
     std::random_device gen;
     std::mt19937 rng(gen());
     std::uniform_int_distribution<int> ran(0, sum_of_odds);
     int r = ran(rng);
-    std::cout << "r: " <<  r << "\n";
+    //std::cout << "r: " <<  r << "\n";
     if (r > stay_odds) {
-        std::cout << "HIT!\n";
+        if (debug) {std::cout << "HIT!\n";}
         return true;
     }
-    std::cout << "STAY!\n";
+    if (debug) {std::cout << "STAY!\n";}
     return false;
 }
 

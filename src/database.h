@@ -5,11 +5,12 @@
 class Database {
  private:
      const std::string DEFAULT_PATH = "database/database.dat";
-     const std::string LOAD_DIRECTORY = "database/";
+    const std::string LOAD_DIRECTORY = "database/";
+    bool debug;
  public:
-     Database(){};
-     ~Database(){};
-     void save(int state [21][11]);
+    Database(bool d = false){debug = d;}
+    ~Database(){};
+    void save(int state [21][11]);
      void save(int state[21][11], std::string filename); 
      /* Note that 'pretty' saving is just for display
       * and is not loaded from.

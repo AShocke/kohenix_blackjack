@@ -12,7 +12,7 @@ void Database::save(int state[21][11]) {
 		o << x << " " << y << " " << state[x][y] << "\n";
 	    }
 	}
-	std::cout << "File was saved succesfully\n";
+	if (debug) {std::cout << "File was saved succesfully\n";}
     } 
     else { 
 	std::cout << "Error: Could not open file \'" << DEFAULT_PATH << "' for writing.\n";
@@ -31,7 +31,7 @@ void Database::save(int state[21][11], std::string filename) {
 		o << x << " " << y << " " << state[x][y] << "\n";
 	    }
 	}
-	std::cout << filepath << " was saved succesfully\n";
+	if (debug) {std::cout << filepath << " was saved succesfully\n";}
     }
     else { 
 	std::cout << "Error: Could not open file \'" << filepath << "' for writing.\n";
@@ -56,7 +56,7 @@ void Database::save_pretty(int state[21][11]) {
 	    }
 	    o << "\n\n";
 	}
-	std::cout << "File was saved succesfully\n";
+	if (debug) {std::cout << "File was saved succesfully\n";}
     }
     else { 
 	std::cout << "Error: Could not open file '" << DEFAULT_PATH << "' for writing.\n";
@@ -82,7 +82,7 @@ void Database::save_pretty(int state[21][11], std::string filename) {
 	    }
 	    o << "\n\n";
 	}
-	std::cout << filepath << "  was saved succesfully\n";
+	if (debug) {std::cout << filepath << "  was saved succesfully\n";};
 	o.close();
     } else {
 	std::cout << "Error: Loading from file '" << filepath << "'for writing.\n"; 

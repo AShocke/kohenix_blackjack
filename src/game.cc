@@ -9,7 +9,7 @@ int give_card() {
     std::mt19937 rng(gen());
     std::uniform_int_distribution<int> ran(1,11);
     int r =  ran(rng);
-    std::cout << "cards given" << r << "\n";
+    //   std::cout << "cards given" << r << "\n";
     return r;
 }
 
@@ -20,9 +20,9 @@ void update_all_odds(bool did_win, std::vector<int> state, int dealer_shown, Log
     // last move made is always a stay (assuming player did not bust)
     l.update_odds(state[state.size() - 1], dealer_shown, did_win, false);
     // all other moves must be hits, exlu
-    std::cout << "state.size() " << state.size() << "\n";
+    //std::cout << "state.size() " << state.size() << "\n";
     for (unsigned i = 0; i < state.size() - 1; i++) {
-	std::cout << "state[" << i << "]: " << state[i] << "\n";
+	//std::cout << "state[" << i << "]: " << state[i] << "\n";
 	l.update_odds(state[i]-1, dealer_shown-1, did_win, true);
     }
     l.save(true);
@@ -40,19 +40,19 @@ void run_game(long int iterations, bool new_data) {
 	std::vector<int> s; // Serves as move history storage for update odds
 	dealer_shown = give_card();
 	dealer_hand = dealer_shown;
-	std::cout << "dealer_shown: " << dealer_shown << "\n";
+	//std::cout << "dealer_shown: " << dealer_shown << "\n";
 	player_hand += give_card();
 	// Player Turn
 	while(l.hit_or_stay(player_hand, dealer_shown)) {
-	    std::cout << "player_hand: " << player_hand << "\n";
+	    //std::cout << "player_hand: " << player_hand << "\n";
 	    s.push_back(player_hand);
 	    int current = player_hand;
 	    current += give_card();
 	    if (current > BLACKJACK) {
 		did_player_bust = true;
-		std::cout << "IN HIT OR STAY BLOCK:" << player_hand << "\n";
+		//std::cout << "IN HIT OR STAY BLOCK:" << player_hand << "\n";
 		update_all_odds(false, s , dealer_shown, l);
-		std::cout << "BUST!" << "\n";
+		//std::cout << "BUST!" << "\n";
 		break;
 	    }
 	    player_hand = current;
@@ -63,14 +63,14 @@ void run_game(long int iterations, bool new_data) {
 	}
 	else {
 	    // Dealer Turn
-	    std::cout << "DEALER TURN\n";
+	    //std::cout << "DEALER TURN\n";
 	    while(dealer_hand < 17) {
 		int current = dealer_hand;
 		current += give_card();
 		if (current > BLACKJACK) {
 		    did_dealer_bust = true;
 		    update_all_odds(true, s, dealer_shown, l);
-		    std::cout << "WIN! DEAL BUST!" << "\n";
+		    //std::cout << "WIN! DEAL BUST!" << "\n";
 		    break;
 		}
 		dealer_hand = current;
@@ -78,11 +78,11 @@ void run_game(long int iterations, bool new_data) {
 	    // Checking For Bust
 	    if (did_dealer_bust) {
 		l.save(true);
-		std::cout << "WIN!" << "\n";
+		//std::cout << "WIN!" << "\n";
 	    }
 	    // Final Results
 	    update_all_odds((player_hand >= dealer_hand), s, dealer_shown,l);
-	    std::cout << ((player_hand >= dealer_hand)? "WIN!\n" : "LOSS\n");
+	    //std::cout << ((player_hand >= dealer_hand)? "WIN!\n" : "LOSS\n");
 	}
     }
 }

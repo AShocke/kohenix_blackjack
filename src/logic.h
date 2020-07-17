@@ -9,9 +9,10 @@ private:
   int stay_[21][11] =  { {0} } ;
   const std::string DEFAULT_STAY_FILE = "stay.dat";
   const std::string DEFAULT_HIT_FILE = "hit.dat";
+    bool debug;
 public:
-    Logic(bool new_data = false);
-    Logic(std::string stay_file, std::string hit_file);
+    Logic(bool new_data = false, bool d = false);
+    Logic(std::string stay_file, std::string hit_file, bool d = false);
     ~Logic(){};
     void update_odds(int p, int b, bool did_win, bool did_hit);
     bool hit_or_stay();
